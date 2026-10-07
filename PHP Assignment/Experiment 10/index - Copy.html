@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="refresh" content="5"
+  
+</head>
+<body>
+<h1 style="color:blue; font-family:Arial, Helvetica, sans-serif">Heading 1</h1>  
+<h2 style="color:blueviolet ;font-family:'Courier New', Courier, monospace">Heading 2</h2>
+<h3 style="color:aqua ; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Heading 3</h3>
+<h4 style="color:chartreuse ;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Heading 4</h4>
+<h5 style="color:brown ;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Heading 5</h5>
+<h6 style="color:crimson ;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Heading 6</h6>
+<ol>
+  <li>Registration</li>
+  <li>Vital Check:</li>
+</ol>
+<ul>
+  <li>Doctor Consultation</li>
+  <li>Lab Test</li>
+  <li>Blood Pressure</li>
+  <li>Temperature</li>
+  <li>Payment</li>
+</ul>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th colspan="3">Daily News</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Politics</td>
+      <td>Sports</td>
+      <td>Weather</td>
+    </tr>
+    <tr>
+      <td>Community</td>
+      <td>Hockey</td>
+      <td>Wind</td>
+    </tr>
+  </tbody>
+</table>
+<img src="sample.jpg" alt="cricket field" height="300px" usemap="#cricket">
+<map name="cricket">
+  <area shape="rect" coords="0,0,300,300" href="cricket.html" alt="Bat">
+</map>
+</body>
+<h1>Experiment 2: HTML Lists and Tables</h1>
+
+  <!-- Task 1: Nested List -->
+  <h2>Recipe: Maggi</h2>
+  <ul>
+    <li>Ingredients
+      <ul>
+        <li>1 packet Maggi</li>
+        <li>2 cups water</li>
+        <li>1 tsp oil</li>
+        <li>Vegetables
+          <ul>
+            <li>Onion</li>
+            <li>Tomato</li>
+            <li>Capsicum</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>Steps
+      <ol>
+        <li>Boil water in a pan</li>
+        <li>Add vegetables and cook for 2 minutes</li>
+        <li>Add Maggi noodles and tastemaker</li>
+        <li>Cook for 3–4 minutes</li>
+        <li>Serve hot!</li>
+      </ol>
+    </li>
+  </ul>
+
+  <hr>
+
+  <!-- Task 2: 4x4 Table -->
+  <h2>Class Timetable</h2>
+  <table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+      <th rowspan="2">Time</th>
+      <th colspan="3">Monday</th>
+    </tr>
+    <tr>
+      <th>Subject 1</th>
+      <th>Subject 2</th>
+      <th>Subject 3</th>
+    </tr>
+    <tr>
+      <td>9:00 - 10:00</td>
+      <td>Maths</td>
+      <td>English</td>
+      <td>Science</td>
+    </tr>
+    <tr>
+      <td>10:00 - 11:00</td>
+      <td>History</td>
+      <td>Geography</td>
+      <td>Sports</td>
+    </tr>
+  </table>
+  <h1>Restaurant Order Form</h1>
+
+  <form action="#" method="post">
+    <!-- Task 1: Input Fields -->
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+
+    <!-- Radio Buttons -->
+    <p>Choose Dining Option:</p>
+    <input type="radio" id="dinein" name="dining" value="Dine-In" required>
+    <label for="dinein">Dine-In</label>
+
+    <input type="radio" id="takeaway" name="dining" value="Takeaway">
+    <label for="takeaway">Takeaway</label>
+    <br><br>
+
+    <!-- Checkboxes -->
+    <p>Select Food Items:</p>
+    <input type="checkbox" id="pizza" name="food" value="Pizza">
+    <label for="pizza">Pizza</label>
+
+    <input type="checkbox" id="burger" name="food" value="Burger">
+    <label for="burger">Burger</label>
+
+    <input type="checkbox" id="pasta" name="food" value="Pasta">
+    <label for="pasta">Pasta</label>
+    <br><br>
+
+    <!-- Task 2: Select Dropdown -->
+    <label for="drink">Choose a Drink:</label>
+    <select id="drink" name="drink" required>
+      <option value="">--Select Drink--</option>
+      <option value="Coke">Coke</option>
+      <option value="Pepsi">Pepsi</option>
+      <option value="Juice">Juice</option>
+      <option value="Water">Water</option>
+    </select>
+    <br><br>
+
+    <!-- Task 3: Validation -->
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+    <br><br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Place Order">
+    <input type="reset" value="Reset">
+  </form>
+
+  <nav >
+  <div class="navbar">
+ <a href="#">Home </a>
+  <a href="#">About</a>
+   <a href="#">Gallary</a>
+    <a href="#">Contact</a>
+
+  </div>
+</nav> 
+
+ <div class="grid-container">
+    <img src="flower.jpeg" height="150px" alt="photo1">
+    <img src="flower1.jpeg"  height="150px" alt="photo2">
+    <img src="flower2.jpeg" height="150px" alt="photo3">
+    <img src="flower3.jpeg"  height="150px" alt="photo4">
+    <img src="flower4.jpeg"  height="200px" alt="photo5">
+    <img src="flower5.jpeg"  height="150px" alt="photo6">
+  </div>
+
+<h1>Welcome to My Styled Webpage</h1>
+  <h2>This is a Subheading</h2>
+
+  <p>This is a normal paragraph styled with CSS. Notice the font and spacing.</p>
+  <p class="alert">This is an important alert message using a class selector.</p>
+  <p id="special">This paragraph is styled using an ID selector.</p>
+
+  <a href="https://www.google.com">This is a link</a>
+
+  div class="card fade">
+    <h1 id="title">Experiment 6 – JavaScript DOM Manipulation</h1>
+
+    <h3>Task 1: Change Text & Background Color</h3>
+    <button id="colorBtn">Change Color</button>
+
+    <hr>
+
+    <h3>Task 2: Implement Counter</h3>
+    <div class="counter-box">
+      <button id="decrease">-</button>
+      <span id="count">0</span>
+      <button id="increase">+</button>
+    </div>
+  </div>
+
+
+  <h2>Clickable World Map Hotspots</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+       alt="World Map"
+       usemap="#worldmap">
+  <map name="worldmap">
+    <area shape="rect"
+          coords="80,130,160,180"
+          href="usa.html"
+          alt="United States"
+          title="Click to visit USA page">
+    <area shape="circle"
+          coords="620,230,35"
+          href="india.html"
+          alt="India"
+          title="Click to visit India page">
+    <area shape="poly"
+          coords="740,360,780,390,820,410,850,370,800,340"
+          href="australia.html"
+          alt="Australia"
+          title="Click to visit Australia page">
+  </map>
+
+
+  <h1>Experiment 8: Auto-Refreshing Content</h1>
+    <p>This page will automatically reload every 5 seconds using <b>setInterval()</b>.</p>
+    <p>Current time: <span class="timestamp" id="time"></span></p>
+
+</body>
+<script src="script.js"></script>
+</html>

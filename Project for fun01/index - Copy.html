@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive Travel Planner</title>
+<!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f0f8ff;
+  }
+  header {
+    padding: 20px;
+    text-align: center;
+    background: #4a90e2;
+    color: white;
+    width: 100%;
+  }
+  #map {
+    height: 300px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #888;
+  }
+  #weather {
+    background: #ffffffcc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 0 5px #666;
+  }
+  #itinerary {
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 7px #999;
+  }
+  #itinerary input[type="text"] {
+    width: 75%;
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  #itinerary button {
+    padding: 8px 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #itinerary ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  #itinerary li {
+    background: #e3f2fd;
+    margin: 6px 0;
+    padding: 8px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Interactive Travel Planner</h1>
+  <input
+    type="text"
+    id="city-input"
+    placeholder="Enter city name"
+    autocomplete="off"
+  />
+  <button id="search-btn">Search</button>
+</header>
+
+<div id="map"></div>
+
+<div id="weather">Weather info will appear here...</div>
+
+<div id="itinerary">
+  <h3>Your Itinerary</h3>
+  <input type="text" id="item-input" placeholder="Add place/activity" />
+  <button id="add-item-btn">Add</button>
+  <ul id="item-list"></ul>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Initialize map
+  let map = L.map('map').setView([20, 0], 2); // Default world view
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  // Marker variable
+  let marker;
+
+  // Function to fetch weather data
+  async function fetchWeather(city) {
+    const apiKey = 'ad9977ec59bfbd6fd46eecd38378e741'; // <-- Replace with your API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('City not found');
+      const data = await response.json();
+
+      const weatherDiv = document.getElementById('weather');
+      weatherDiv.innerHTML = `
+        <h4>Weather in ${data.name}, ${data.sys.country}</h4>
+        <p>Temperature: ${data.main.temp} °C</p>
+        <p>Condition: ${data.weather[0].description}</p>
+        <p>Humidity: ${data.main.humidity}%</p>
+      `;
+    } catch (err) {
+      alert(err.message);
+    }
+  }
+
+  // Search button click handler
+  document.getElementById('search-btn').addEventListener('click', async () => {
+    const city = document.getElementById('city-input').value.trim();
+    if (!city) return alert('Please enter a city name');
+
+    // Use Nominatim to get coordinates from city name (free OpenStreetMap geocoding)
+    const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`;
+
+    try {
+      const response = await fetch(geoUrl);
+      const results = await response.json();
+      if (results.length === 0) throw new Error('Location not found');
+
+      const { lat, lon } = results[0];
+
+      // Move map to new location
+      map.setView([lat, lon], 12);
+      if (marker) map.removeLayer(marker);
+      marker = L.marker([lat, lon]).addTo(map);
+
+      // Fetch weather
+      fetchWeather(city);
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  // Itinerary add item
+  document.getElementById('add-item-btn').addEventListener('click', () => {
+    const itemInput = document.getElementById('item-input');
+    const itemText = itemInput.value.trim();
+    if (!itemText) return;
+
+    const itemList = document.getElementById('item-list');
+    const li = document.createElement('li');
+    li.textContent = itemText;
+    itemList.appendChild(li);
+    itemInput.value = '';
+
+    // Save itinerary in localStorage (optional enhancement)
+  });
+</script>
+</body>
+</html>

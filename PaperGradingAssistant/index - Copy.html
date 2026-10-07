@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Grading Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Paper Grading Assistant</h1>
+        <textarea id="studentAnswer" placeholder="Enter student's answer"></textarea>
+        <button onclick="analyzeAnswer()">Analyze Answer</button>
+        <div id="result">
+            <h3>Result:</h3>
+            <p id="keyConcepts"></p>
+            <p id="plagiarismStatus"></p>
+            <p id="score"></p>
+            <p id="feedback"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

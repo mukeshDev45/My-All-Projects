@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Expense Tracker</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f8;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 400px;
+    background: white;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  input[type="text"], input[type="number"] {
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .expense-info {
+    display: flex;
+    gap: 10px;
+    font-weight: 500;
+    color: #333;
+  }
+  .delete-btn {
+    background: #dc3545;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .delete-btn:hover {
+    background: #a71d2a;
+  }
+  .total {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+    margin-top: 15px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+    <form id="expense-form">
+      <input type="text" id="desc" placeholder="Expense description" required />
+      <input type="number" id="amount" placeholder="Amount (₹)" min="0.01" step="0.01" required />
+      <button type="submit">Add Expense</button>
+    </form>
+    <ul id="expense-list"></ul>
+    <div class="total" id="total">Total: ₹0.00</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('expense-form');
+    const descInput = document.getElementById('desc');
+    const amountInput = document.getElementById('amount');
+    const expenseList = document.getElementById('expense-list');
+    const totalDisplay = document.getElementById('total');
+
+    let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
+    function saveExpenses() {
+      localStorage.setItem('expenses', JSON.stringify(expenses));
+    }
+
+    function renderExpenses() {
+      expenseList.innerHTML = '';
+      let total = 0;
+
+      expenses.forEach((expense, index) => {
+        total += expense.amount;
+
+        const li = document.createElement('li');
+
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('expense-info');
+        infoDiv.textContent = `${expense.description} - ₹${expense.amount.toFixed(2)}`;
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Delete';
+        delBtn.classList.add('delete-btn');
+        delBtn.onclick = () => {
+          expenses.splice(index, 1);
+          saveExpenses();
+          renderExpenses();
+        };
+
+        li.appendChild(infoDiv);
+        li.appendChild(delBtn);
+        expenseList.appendChild(li);
+      });
+
+      totalDisplay.textContent = `Total: ₹${total.toFixed(2)}`;
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const description = descInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+      if(description && amount > 0){
+        expenses.push({ description, amount });
+        saveExpenses();
+        renderExpenses();
+        form.reset();
+        descInput.focus();
+      }
+    });
+
+    renderExpenses();
+  </script>
+</body>
+</html>

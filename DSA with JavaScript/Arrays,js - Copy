@@ -1,0 +1,55 @@
+ // let arr = [];
+ // arr.push(100);
+ // arr.push(20);
+ // arr.push(235);
+ // arr.push(false);
+ // console.log(arr);
+
+// console.log(arr);
+// arr.pop();
+// console.log(arr);
+
+
+// let arr = new Array(3);
+// arr[0] = 100;
+// arr[1] = 20;
+// arr[2] = 30;
+// arr[3] = 1045;
+
+// arr[10] = 150; // [100, 20, 30, 1045, empty*6, 150]
+
+// console.log(arr);
+
+// Array is the linear data structure 
+// Which store multiple value in a continuous manner
+
+
+// let arr = [];
+// arr[0] = 10;
+// console.log(arr);
+
+// let arr = new Array(5);
+// arr[0] = Number(prompt("Enter a value"));
+// arr[1] = Number(prompt("Enter a value"));
+// arr[2] = Number(prompt("Enter a value"));
+// arr[3] = Number(prompt("Enter a value"));
+// arr[4] = Number(prompt("Enter a value"));
+// console.log(arr);
+
+
+
+// let arr = [10, 20, 30, 40, 50];
+
+// let sum = 0;
+// for(let i=0; i<arr.length; i++){
+//     sum += arr[i];
+
+// }
+// console.log(sum);
+
+// let a = 20;
+// a =200;
+// console.log(a);
+
+//let arr = [10, 2, 78, 100, 4];
+

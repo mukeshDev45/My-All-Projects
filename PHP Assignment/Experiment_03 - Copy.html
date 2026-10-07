@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant Order Form</title>
+</head>
+<body>
+  <h1>Restaurant Order Form</h1>
+
+  <form action="#" method="post">
+    <!-- Task 1: Input Fields -->
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+
+    <!-- Radio Buttons -->
+    <p>Choose Dining Option:</p>
+    <input type="radio" id="dinein" name="dining" value="Dine-In" required>
+    <label for="dinein">Dine-In</label>
+
+    <input type="radio" id="takeaway" name="dining" value="Takeaway">
+    <label for="takeaway">Takeaway</label>
+    <br><br>
+
+    <!-- Checkboxes -->
+    <p>Select Food Items:</p>
+    <input type="checkbox" id="pizza" name="food" value="Pizza">
+    <label for="pizza">Pizza</label>
+
+    <input type="checkbox" id="burger" name="food" value="Burger">
+    <label for="burger">Burger</label>
+
+    <input type="checkbox" id="pasta" name="food" value="Pasta">
+    <label for="pasta">Pasta</label>
+    <br><br>
+
+    <!-- Task 2: Select Dropdown -->
+    <label for="drink">Choose a Drink:</label>
+    <select id="drink" name="drink" required>
+      <option value="">--Select Drink--</option>
+      <option value="Coke">Coke</option>
+      <option value="Pepsi">Pepsi</option>
+      <option value="Juice">Juice</option>
+      <option value="Water">Water</option>
+    </select>
+    <br><br>
+
+    <!-- Task 3: Validation -->
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+    <br><br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Place Order">
+    <input type="reset" value="Reset">
+  </form>
+
+</body>
+</html>

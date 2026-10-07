@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>World Map Hotspots</title>
+  <style>
+    body {
+      background-color: #e6f2ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h2 {
+      color: #003366;
+    }
+    img {
+      width: 80%;
+      max-width: 900px;
+      height: auto;
+      border: 2px solid #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Clickable World Map Hotspots</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+       alt="World Map"
+       usemap="#worldmap">
+  <map name="worldmap">
+    <area shape="rect"
+          coords="80,130,160,180"
+          href="usa.html"
+          alt="United States"
+          title="Click to visit USA page">
+    <area shape="circle"
+          coords="620,230,35"
+          href="india.html"
+          alt="India"
+          title="Click to visit India page">
+    <area shape="poly"
+          coords="740,360,780,390,820,410,850,370,800,340"
+          href="australia.html"
+          alt="Australia"
+          title="Click to visit Australia page">
+  </map>
+
+</html>

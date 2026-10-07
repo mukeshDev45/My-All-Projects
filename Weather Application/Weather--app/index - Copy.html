@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <div class="search-box">
+          <input type="text" id="city-input" placeholder="Enter city name">
+          <button id="search-btn">Search</button>
+        <input type="text" id="lat-input" placeholder="Enter Latitude">
+        <input type="text" id="lon-input" placeholder="Enter Longitude">
+        <button id="latlon-btn">Search by Coordinates</button>
+        <button id="add-favorite-btn">Add to Favorites</button>
+        </div>
+        <div id="favorites-section">
+          <h3>Favorite Cities</h3>
+          <ul id="favorites-list"></ul>
+        </div>
+        <div class="weather-info">Weather Information
+      <p id="city-name">City name:-    </p>
+        <p id="temperature">Temperature:-  </p>
+     <p id="weather-description"> Weather-Description</p>
+     
+
+     <!-- 3 day weather forecast -->
+
+     <div class="forecast">
+      <h2>3-Day Weather Forecast</h2>
+      <div class="forecast-days">
+        <!-- Forecast data for each day will be added dynamically -->
+    
+        <div class="day-card">
+          <div class="day-date"></div>
+          <div class="day-weather-icon">
+            <img src="weather-icon.png" alt="Weather Icon">
+          </div>
+          <div class="day-temperature"></div>
+          <div class="day-description"></div>
+          <div class="coordinates"></div>
+        </div>
+    
+        <div class="day-card">
+          <div class="day-date"></div>
+          <div class="day-weather-icon">
+            <img src="weather-icon.png" alt="Weather Icon">
+          </div>
+          <div class="day-temperature"></div>
+          <div class="day-description"></div>
+          <div class="coordinates"></div>
+        </div>
+    
+        <div class="day-card">
+          <div class="day-date"></div>
+          <div class="day-weather-icon">
+            <img src="weather-icon.png" alt="Weather Icon">
+          </div>
+          <div class="day-temperature"></div>
+          <div class="day-description"></div>
+          <div class="coordinates"></div>
+        </div>
+    
+      </div>
+    </div>
+
+
+    <button id="toggle-temp-btn">Show in °F</button>
+    <script src="app.js"></script>
+
+    
+</body>
+</html>

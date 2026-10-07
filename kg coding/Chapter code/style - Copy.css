@@ -1,0 +1,19 @@
+h1{
+    color: red;
+    text-align: center;
+    text-decoration: dotted;
+
+
+}
+p{
+   color: black;
+   background-color:yellow;
+   text-align: right;
+
+}
+div{
+    color: green;
+    height: 100px;
+    width: 100px;
+    border-radius: 1px;
+}
